@@ -14,6 +14,8 @@
 		CEA751A52AD885D0000ADCDA /* DifficultyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA751A42AD885D0000ADCDA /* DifficultyCell.swift */; };
 		CEA751A82AD88F88000ADCDA /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA751A72AD88F88000ADCDA /* ColorExtension.swift */; };
 		CEA751AA2AD8915A000ADCDA /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA751A92AD8915A000ADCDA /* Options.swift */; };
+		CEA751AD2AD8CAF4000ADCDA /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA751AC2AD8CAF4000ADCDA /* Questions.swift */; };
+		CEA751AF2AD8CEF3000ADCDA /* QuestionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA751AE2AD8CEF3000ADCDA /* QuestionExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		CEA751A42AD885D0000ADCDA /* DifficultyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyCell.swift; sourceTree = "<group>"; };
 		CEA751A72AD88F88000ADCDA /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		CEA751A92AD8915A000ADCDA /* Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
+		CEA751AC2AD8CAF4000ADCDA /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
+		CEA751AE2AD8CEF3000ADCDA /* QuestionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,7 @@
 		CE0ADA0C2AD847790057C6BF /* KidMaths */ = {
 			isa = PBXGroup;
 			children = (
+				CEA751AB2AD8CADC000ADCDA /* util */,
 				CEA751A62AD88F66000ADCDA /* extensions */,
 				CEA751A12AD884AF000ADCDA /* custom views */,
 				CE0ADA0D2AD847790057C6BF /* KidMathsApp.swift */,
@@ -88,8 +93,17 @@
 			isa = PBXGroup;
 			children = (
 				CEA751A72AD88F88000ADCDA /* ColorExtension.swift */,
+				CEA751AE2AD8CEF3000ADCDA /* QuestionExtension.swift */,
 			);
 			path = extensions;
+			sourceTree = "<group>";
+		};
+		CEA751AB2AD8CADC000ADCDA /* util */ = {
+			isa = PBXGroup;
+			children = (
+				CEA751AC2AD8CAF4000ADCDA /* Questions.swift */,
+			);
+			path = util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,6 +179,8 @@
 				CE0ADA102AD847790057C6BF /* ContentView.swift in Sources */,
 				CEA751A52AD885D0000ADCDA /* DifficultyCell.swift in Sources */,
 				CE0ADA0E2AD847790057C6BF /* KidMathsApp.swift in Sources */,
+				CEA751AD2AD8CAF4000ADCDA /* Questions.swift in Sources */,
+				CEA751AF2AD8CEF3000ADCDA /* QuestionExtension.swift in Sources */,
 				CEA751AA2AD8915A000ADCDA /* Options.swift in Sources */,
 				CEA751A82AD88F88000ADCDA /* ColorExtension.swift in Sources */,
 			);

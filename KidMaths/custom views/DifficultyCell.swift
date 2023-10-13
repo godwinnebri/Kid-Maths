@@ -11,9 +11,7 @@ struct DifficultyCell: View {
     let cellNum : Int
     
     var body: some View {
-        Button {
-            //Do something here
-        } label: {
+        
             ZStack {
                 Color.white
                     .opacity(0.2)
@@ -22,8 +20,7 @@ struct DifficultyCell: View {
                     .font(.title2)
             }
             
-        }
-        .clipShape(Circle())
+        .clipShape(RoundedRectangle(cornerRadius: 18))
         .frame(width: 60, height: 60)
     }
 }
