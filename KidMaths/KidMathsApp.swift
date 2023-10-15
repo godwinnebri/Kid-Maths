@@ -11,7 +11,7 @@ import SwiftUI
 struct KidMathsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(answerList: [1,2,3,4])
+            ContentView(answerList: [1,2,3,4], isCorrect: false)
         }
     }
 }

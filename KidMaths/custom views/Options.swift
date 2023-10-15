@@ -11,9 +11,7 @@ struct Options: View {
     let option : Int
     
     var body: some View {
-        Button {
-            //Do something here
-        } label: {
+       
             ZStack {
                 Color.gray
                     .opacity(0.1)
@@ -21,11 +19,10 @@ struct Options: View {
                     .foregroundColor(.black)
                     .font(.title2)
             }
+            .clipShape(RoundedRectangle(cornerRadius: 10 ))
+            .frame(width: 120, height: 60)
             
         }
-        .clipShape(RoundedRectangle(cornerRadius: 10 ))
-        .frame(width: 120, height: 60)
-    }
 }
 
 struct Options_Previews: PreviewProvider {

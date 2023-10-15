@@ -18,6 +18,10 @@ struct ContentView: View {
        @State public var answerList: [Int]
        @State private var question = ""
     @State public var quiz: MultiplicationQuiz?
+    
+    @State private var userSelection = 0
+    @State public var isCorrect : Bool
+    
 
     
     var body: some View {
@@ -78,7 +82,20 @@ struct ContentView: View {
             LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 8), count: 2), alignment: .center, spacing: 18) {
 
                     ForEach (0..<4) {number in
-                       Options(option: answerList[number])
+                       
+                        Button {
+                            //check if user is correct
+                            userSelection = answerList[number]
+                            
+                            if userSelection == answer {
+                                isCorrect = true
+                            } else {
+                                isCorrect = false
+                            }
+                            
+                        } label: {
+                            Options(option: answerList[number])
+                        }
                     }//foreach
                 }// G R I D
             .frame(width: 270)
@@ -89,7 +106,7 @@ struct ContentView: View {
             Button {
                 askQuestion(difficultyLevel: difficulty)
             } label: {
-                Text("Next")
+                Text(String(isCorrect))
                    .foregroundColor(.white)
                    .font(.headline)
                    .frame(maxWidth: .infinity, minHeight: 60)
@@ -108,34 +125,9 @@ struct ContentView: View {
         
     }
     
-//    func askQuestion(difficultyLevel: Int) {
-//        difficulty = difficultyLevel
-//        // Get the question for the selected difficulty
-//        answerList = [1, 2, 3, answer].shuffled()
-//        quiz = MultiplicationQuiz(multiplicationTable: 1)
-//        let selectedQuestion = quiz.shuffledQuestions[difficulty - 1]
-//        // Assign the answer from the selected question to the answer variable
-//        answer = selectedQuestion.answer
-//        // Set the question text for display
-//        question = selectedQuestion.questionText
-//    }
-    
     func askQuestion(difficultyLevel: Int) {
         difficulty = difficultyLevel
         quiz = MultiplicationQuiz(multiplicationTable: difficultyLevel)
-
-
-        // Set the multiplication table based on difficulty
-//        let multiplicationTable: Int
-//        switch difficultyLevel {
-//        case 1:
-//            multiplicationTable = 1
-//        case 2:
-//            multiplicationTable = 2
-//        // Add more cases for other difficulty levels as needed
-//        default:
-//            multiplicationTable = 1
-//        }
 
         // Get questions for the selected multiplication table
         let shuffledQuestions = quiz?.shuffledQuestions
@@ -148,17 +140,12 @@ struct ContentView: View {
         question = selectedQuestion?.questionText ?? "0"
 
         // Update answerList accordingly
-        answerList = [1, 2, 3, answer].shuffled()
+        answerList = [Int.random(in: 1..<19 + 5), Int.random(in: 1..<19 + 5), Int.random(in: 1..<19 + 5), answer].shuffled()
     }
-
-
-
-
-
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(answerList: [1,2,3,4])
+        ContentView(answerList: [1,2,3,4], isCorrect: false)
     }
 }
