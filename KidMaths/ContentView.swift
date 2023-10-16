@@ -23,7 +23,7 @@ struct ContentView: View {
     
     @State private var score = 0
     @State private var attempts = 0
-    @State private var numberOfQuestions = 1
+    @State private var numberOfQuestions = 5
 
 
     
@@ -64,15 +64,18 @@ struct ContentView: View {
             .clipShape(RoundedRectangle(cornerRadius: 28))
             .ignoresSafeArea()
             
-            
-//            Color.clear
-//                .frame(height: 4)
-            
             Text("What is \(question)?")
             
             Spacer()
             
-            if showAlert {
+            if attempts == numberOfQuestions {
+                VStack (spacing: 16) {
+                    Text("🎉")
+                    
+                    Text("Game over!")
+                }
+            }
+            else if showAlert {
                 VStack (spacing: 16) {
                     Image(systemName: icon)
                         .imageScale(.large)
@@ -81,7 +84,7 @@ struct ContentView: View {
                     Text(message)
                 }
             }
-            else {
+            else if !showAlert {
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 8), count: 2), alignment: .center, spacing: 18) {
                 
                 ForEach (0..<4) {number in
@@ -116,9 +119,9 @@ struct ContentView: View {
             Spacer()
             
             Button {
-                askQuestion(difficultyLevel: difficulty)
+                attempts == numberOfQuestions ? resetGame() : askQuestion(difficultyLevel: difficulty)
             } label: {
-                Text("Next question")
+                Text(attempts == numberOfQuestions ? "Restart" : "Next question")
                    .foregroundColor(.white)
                    .font(.headline)
                    .frame(maxWidth: .infinity, minHeight: 60)
@@ -150,9 +153,9 @@ struct ContentView: View {
             }
             .padding(.horizontal, 24)
             
+        
         } // V S T A C K
         .onAppear {
-                    // Initialize answerList and quiz here
                     askQuestion(difficultyLevel: difficulty)
                 }
         
@@ -167,6 +170,7 @@ struct ContentView: View {
         // Get questions for the selected multiplication table
         let shuffledQuestions = quiz?.shuffledQuestions
 
+        // Asign a question from the question list to the question variable
         let selectedQuestion = shuffledQuestions?[difficulty - 1]
 
         // Assign the answer from the selected question to the answer variable
@@ -177,6 +181,12 @@ struct ContentView: View {
 
         // Update answerList accordingly
         answerList = [Int.random(in: 1..<19 + 5), Int.random(in: 1..<19 + 5), Int.random(in: 1..<19 + 5), answer].shuffled()
+    }
+    
+    func resetGame () {
+        attempts = 0
+        score = 0
+        difficulty = 1
     }
 }
 
