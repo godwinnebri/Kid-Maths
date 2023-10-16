@@ -9,14 +9,15 @@ import SwiftUI
 
 struct DifficultyCell: View {
     let cellNum : Int
+    let difficulty : Int
     
     var body: some View {
         
             ZStack {
                 Color.white
-                    .opacity(0.2)
+                    .opacity(difficulty == cellNum ? 1 : 0.2)
                 Text(String(cellNum))
-                    .foregroundColor(.white)
+                    .foregroundColor(difficulty == cellNum ? .blue : .white)
                     .font(.title2)
             }
             
@@ -27,6 +28,6 @@ struct DifficultyCell: View {
 
 struct DifficultyCell_Previews: PreviewProvider {
     static var previews: some View {
-        DifficultyCell(cellNum: 0)
+        DifficultyCell(cellNum: 0, difficulty: 1)
     }
 }
